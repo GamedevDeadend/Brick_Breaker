@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class MenuUI : MonoBehaviour
 {
 
+    [SerializeField]SystemManager systemManager;
     [SerializeField] GameObject InputText;
     string userName;
 
@@ -55,6 +56,7 @@ public class MenuUI : MonoBehaviour
     void StoreName()
     {
         userName = InputText.GetComponent<TextMeshProUGUI>().text;
-        Debug.Log("Success" + userName);
+        systemManager.SetStringValue(userName);
+        
     }
 };
