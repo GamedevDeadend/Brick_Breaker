@@ -20,6 +20,8 @@ public class MainManager : MonoBehaviour
     
     private bool m_GameOver = false;
 
+    // MenuUI menu;
+
     
 
 
@@ -70,6 +72,8 @@ public class MainManager : MonoBehaviour
     {
         m_Points += point;
         ScoreText.text = $"Score : {m_Points}";
+
+        // menu.highScore = m_Points;
     }
 
     public void GameOver()

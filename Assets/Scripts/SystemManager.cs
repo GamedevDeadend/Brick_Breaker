@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SystemManager : MonoBehaviour
 {
     public static SystemManager instance;
 
-    string userNameRef;
+    public string userNameRef;
     void Awake()
     {
         if(instance == null)
