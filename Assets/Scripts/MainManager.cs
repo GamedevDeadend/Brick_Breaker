@@ -73,13 +73,14 @@ public class MainManager : MonoBehaviour
         m_Points += point;
         ScoreText.text = $"Score : {m_Points}";
 
-        // menu.highScore = m_Points;
     }
 
     public void GameOver()
     {
         m_GameOver = true;
+        SystemManager.instance.totalScore = m_Points;
         GameOverText.SetActive(true);
+        SystemManager.instance.SaveName();
     }
 
     

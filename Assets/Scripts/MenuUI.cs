@@ -28,20 +28,23 @@ public class MenuUI : MonoBehaviour
 
     public void Play()
     {
+        SystemManager.instance.LoadData();
         SceneManager.LoadScene(1);
     }
 
     public void Quit()
     {
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
 
         EditorApplication.ExitPlaymode();
 
-#else
+        #else
 
             Application.Quit();
 
-#endif
+        #endif
+
+       SystemManager.instance.SaveName();
     }
 
     public void ReturnMenu()
@@ -52,7 +55,7 @@ public class MenuUI : MonoBehaviour
     void StoreName()
     {
         userName = InputText.GetComponent<TextMeshProUGUI>().text;
-        SystemManager.instance.playerName = userName;
+        // SystemManager.instance.playerName = userName;
     }
 };
 
@@ -72,3 +75,4 @@ public class MenuUI : MonoBehaviour
 
 //********DEBUGGER**************
     // Debug.Log(userName);
+    // Debug.Log("failed");
