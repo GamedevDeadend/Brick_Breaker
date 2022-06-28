@@ -9,8 +9,10 @@ public class DisplayName : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(SystemManager.instance != null);
-        highestScore.text = "BestScore : " + SystemManager.instance.playerName + " 0"; 
+        if(SystemManager.instance != null)
+        {
+            highestScore.text = "BestScore : " + SystemManager.instance.playerName + " 0"; 
+        }
     }
 
     // Update is called once per frame
