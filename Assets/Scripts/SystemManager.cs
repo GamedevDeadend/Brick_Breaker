@@ -29,10 +29,6 @@ public class SystemManager : MonoBehaviour
 
     }
 
-    void Update()
-    {
-    }
-
     [System.Serializable]
     public class SaveData
     {
@@ -40,25 +36,29 @@ public class SystemManager : MonoBehaviour
          public int savedScore;
     };
 
-    public void SaveName()
+    public void saveData()
     {
         SaveData data = new SaveData();
         data.savePlayerName = playerName;
         data.savedScore = totalScore;
 
         string json = JsonUtility.ToJson(data);
+
+        File.WriteAllText(Application.persistentDataPath + "/savefile.json", json);
     }
 
-    public void LoadData()
+    public void loadData()
     {
         string savePath  = Application.persistentDataPath + "/savefile.json";
+        // Debug.Log(playerName + "lol :)" );
         if(File.Exists(savePath))
         {
             string loadJson = File.ReadAllText(savePath);
             SaveData data = JsonUtility.FromJson<SaveData>(loadJson);
 
-            totalScore = data.savedScore;
             playerName = data.savePlayerName;
+            Debug.Log(playerName + "lohjl :)");
+            totalScore = data.savedScore;
         }
         // Debug.Log(totalScore + "123");
     }

@@ -10,14 +10,16 @@ using UnityEngine.UI;
 
 public class MenuUI : MonoBehaviour
 {
-
-    
-
     [SerializeField] GameObject InputText;
 
     string userName;
 
     // Update is called once per frame
+    void Start()
+    {
+        SystemManager.instance.loadData();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
@@ -28,12 +30,14 @@ public class MenuUI : MonoBehaviour
 
     public void Play()
     {
-        SystemManager.instance.LoadData();
-        SceneManager.LoadScene(1);
+        SystemManager.instance.loadData();
+        SceneManager.LoadScene(sceneBuildIndex: 1);
     }
 
     public void Quit()
     {
+        SystemManager.instance.saveData();
+
         #if UNITY_EDITOR
 
         EditorApplication.ExitPlaymode();
@@ -44,7 +48,6 @@ public class MenuUI : MonoBehaviour
 
         #endif
 
-       SystemManager.instance.SaveName();
     }
 
     public void ReturnMenu()
@@ -55,7 +58,7 @@ public class MenuUI : MonoBehaviour
     void StoreName()
     {
         userName = InputText.GetComponent<TextMeshProUGUI>().text;
-        // SystemManager.instance.playerName = userName;
+        SystemManager.instance.playerName = userName;
     }
 };
 

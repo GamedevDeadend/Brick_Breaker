@@ -11,7 +11,7 @@ public class DisplayName : MonoBehaviour
     {
         if(SystemManager.instance != null)
         {
-            highestScore.text = "BestScore : " + SystemManager.instance.playerName + " - " + SystemManager.instance.totalScore;
+            highestScore.text = "BestScore : " + SystemManager.instance.playerName + " ( " + SystemManager.instance.totalScore + " ) ";
         }
     }
 

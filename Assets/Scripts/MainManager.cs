@@ -78,9 +78,16 @@ public class MainManager : MonoBehaviour
     public void GameOver()
     {
         m_GameOver = true;
-        SystemManager.instance.totalScore = m_Points;
+        int tempScore;
+        SystemManager.instance.loadData();
+        tempScore = SystemManager.instance.totalScore;
+
+        if(m_Points > tempScore)
+        {
+            SystemManager.instance.totalScore = m_Points;  
+        }
         GameOverText.SetActive(true);
-        SystemManager.instance.SaveName();
+        SystemManager.instance.saveData();
     }
 
     
